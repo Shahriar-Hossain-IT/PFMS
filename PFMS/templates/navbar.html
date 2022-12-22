@@ -1,62 +1,49 @@
-<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark ">
-    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <span class="fs-5">PFMS</span>
-        </a>
-        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
-            <li>
-                <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-                    <i class="fs-4 bi-speedometer2 text-white"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-            </li>
-            <li>
-                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle justify-center ">
-                    <i class="fs-4 bi-bootstrap text-white"></i> <span class="ms-1 d-none d-sm-inline text-white">Accounts</span></a>
-                <ul class="collapse nav flex-column ms-1 " id="submenu2" data-bs-parent="#menu">
-                    <li class="w-100">
-                        <a href="accounts/add-new-account/" class="nav-link px-0 text-white">Add New Account</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 text-white"> Check Balance</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 text-white">Check Transaction</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-grid text-white"></i> <span class="ms-1 d-none d-sm-inline text-white">Income</span> </a>
-                    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                    <li class="w-100">
-                        <a href="#" class="nav-link px-0 text-white"> Add New Income Category</a>
-                    </li>
-                    <li>
-                        <a href="income/add-income-record/" class="nav-link px-0 text-white"> Add Income Record</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-                    <i class="fs-4 bi-grid text-white"></i> <span class="ms-1 d-none d-sm-inline">Expanse</span> </a>
-                    <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
-                    <li class="w-100">
-                        <a href="#" class="nav-link px-0 text-white"> Add New Expanse Category</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 text-white"> Add Expanse Record</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <hr>
-        <div class="dropdown pb-4">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                <span class="d-none d-sm-inline mx-1">{{request.user}}</span>
+<nav class="navbar navbar-dark bg-dark fixed-top sticky-top">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">{% block header %}
+      Personal Finance Management
+     {% endblock %}</a>
+    
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Dashboard</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Accounts
             </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="{% url 'logout'%}">Log out</a></li>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'addnewaccount' %}">Add New Account</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Check Balance</a></li>
+              <li><a class="dropdown-item" href="#">Check Transitions History </a></li>
             </ul>
-        </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Income
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'add-income-record' %}">Add Income record</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="{% url 'category-list' %}">Income Category</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-</div>
+  </div>
+</nav>
