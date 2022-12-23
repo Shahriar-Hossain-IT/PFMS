@@ -5,9 +5,11 @@ from accounts.models import Account_Transaction, Accounts
 from django.views.generic.list import ListView
 import datetime
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-
+@login_required
 def add_new_expanse_record_form(request):
     form = AddNewExpanseRecord(request.POST or None)
     if form.is_valid():
@@ -28,13 +30,13 @@ def add_new_expanse_record_form(request):
 
 
 
-class ExpanseCategoryList(ListView):
+class ExpanseCategoryList(LoginRequiredMixin,ListView):
     model = Expanse_Category
 
-class ExpanseRecordList(ListView):
+class ExpanseRecordList(LoginRequiredMixin,ListView):
     model = Expanse_Record
 
-
+@login_required
 def add_new_expanse_category(request):
     form = AddNewExpanseCategory(request.POST or None)
     if form.is_valid():

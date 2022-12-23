@@ -5,8 +5,11 @@ from accounts.models import Account_Transaction, Accounts
 from django.views.generic.list import ListView
 import datetime
 from django.shortcuts import redirect
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+# Create your views here.
+@login_required
 def add_new_income_record_form(request):
     form = AddNewIncomeRecord(request.POST or None)
     if form.is_valid():
@@ -27,13 +30,13 @@ def add_new_income_record_form(request):
 
 
 
-class CategoryList(ListView):
+class CategoryList(LoginRequiredMixin,ListView):
     model = Income_Category
 
-class IncomeRecordList(ListView):
+class IncomeRecordList(LoginRequiredMixin,ListView):
     model = Income_Record
 
-
+@login_required
 def add_new_income_category(request):
     form = AddNewIncomeCategory(request.POST or None)
     if form.is_valid():
