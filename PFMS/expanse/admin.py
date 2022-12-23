@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Expanse_Category, Expanse_Record
 
-# Register your models here.
+admin.site.register(Expanse_Category)
+admin.site.register(Expanse_Record)

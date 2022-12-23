@@ -1,12 +1,12 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Income_Record, Income_Category
+from .models import Expanse_Record, Expanse_Category
 import datetime
 
 
-class AddNewIncomeRecord(ModelForm):
+class AddNewExpanseRecord(ModelForm):
     class Meta:
-        model = Income_Record
+        model = Expanse_Record
         fields = ('account','category', 'ammount', 'details')
 
         widgets = {
@@ -18,9 +18,9 @@ class AddNewIncomeRecord(ModelForm):
         }
 
 
-class AddNewIncomeCategory(ModelForm):
+class AddNewExpanseCategory(ModelForm):
     class Meta:
-        model = Income_Category
+        model = Expanse_Category
         fields = '__all__'
 
         widgets = {

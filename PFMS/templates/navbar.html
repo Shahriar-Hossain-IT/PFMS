@@ -26,8 +26,8 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Check Balance</a></li>
-              <li><a class="dropdown-item" href="#">Check Transitions History </a></li>
+              <li><a class="dropdown-item" href="{% url 'account-balance' %}">Check Balance</a></li>
+              <li><a class="dropdown-item" href="{% url 'transaction-history' %}">Check Transitions History </a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -40,6 +40,20 @@
                 <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="{% url 'category-list' %}">Income Category</a></li>
+              <li><a class="dropdown-item" href="{% url 'income-record-list' %}">Income Records</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Expanse
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'add-expanse-record' %}">Add Expanse record</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="{% url 'expanse-category-list' %}">Expanse Category</a></li>
+              <li><a class="dropdown-item" href="{% url 'expanse-record-list' %}">Expanse Records</a></li>
             </ul>
           </li>
         </ul>

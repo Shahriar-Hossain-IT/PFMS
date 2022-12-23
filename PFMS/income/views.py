@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import Income_Record, Income_Category
-from .forms import AddNewIncomeRecord
+from .forms import AddNewIncomeRecord, AddNewIncomeCategory
 from accounts.models import Account_Transaction, Accounts
 from django.views.generic.list import ListView
 import datetime
+from django.shortcuts import redirect
 # Create your views here.
 
 def add_new_income_record_form(request):
@@ -28,4 +29,20 @@ def add_new_income_record_form(request):
 
 class CategoryList(ListView):
     model = Income_Category
+
+class IncomeRecordList(ListView):
+    model = Income_Record
+
+
+def add_new_income_category(request):
+    form = AddNewIncomeCategory(request.POST or None)
+    if form.is_valid():
+        form.save()
+        # form = AddNewExpanseCategory()
+        return redirect('/income/category-list/')
+        
+    context = {
+        'form': form
+    }
+    return render(request, "income/add-income-category.html", context)
 
