@@ -1,7 +1,5 @@
 # PFMS
 
-My name is Shahriar Hossain. I am from Bangladesh and i just completed my “A” level and preparing for university.
-
 I am trying to #buildinpublic a full stack Django webapp for my portfolio. 
 But just to be clear this repositorie is going to contain lots & lots of mistakes, ugly code & some bullshit logic.
 
