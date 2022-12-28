@@ -2,16 +2,19 @@
 {{ form.media }}
 
 
-
-
 {% block body %}
 <div class="container">
+  <div class="text-white d-flex">
+    <form method="get" class="col">
+      {{form.form.as_p}}
+      <button class="btn btn-primary" type="submit">Filter</button>
+    </form>
+  </div>
+
   <table class="table table-dark table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Date</th>
-        
         <th scope="col">Account Name</th>
         <th scope="col">Transaction Type</th>
         <th scope="col">Amount</th>
@@ -21,8 +24,7 @@
     <tbody>
       {% for transaction in object_list %}  
       <tr>
-        <th scope="row">{{transaction.id}}</th>
-        <td>{{account.date}}</td>
+        <th scope="row">{{transaction.date}}</th>
         <td>{{transaction.account}}</td>
         <td>{{transaction.account_transaction_type}}</td>
         <td>{{transaction.ammount}}</td>

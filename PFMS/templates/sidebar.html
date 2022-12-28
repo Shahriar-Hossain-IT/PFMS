@@ -1,0 +1,161 @@
+
+<!-- Thanks to https://github.com/frontendfunn/bootstrap-5-admin-dashboard-template -->
+<div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
+  <div class="offcanvas-body p-0">
+    <nav class="navbar-dark">
+      <ul class="navbar-nav">
+        <li>
+          <div class="text-muted small fw-bold text-uppercase px-3">
+            Dashboard
+          </div>
+        </li>
+        <li>
+          <a href="{% url 'dashboard' %}" class="nav-link px-3 active">
+            <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="my-4">
+          <hr class="dropdown-divider bg-light" />
+        </li>
+        <li>
+          <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+            Accounts
+          </div>
+        </li>
+        <li>
+          <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#Accounts">
+            <span class="me-2"><i class="bi bi-layout-split"></i></span>
+            <span>Accounts</span>
+            <span class="ms-auto">
+              <span class="right-icon">
+                <i class="bi bi-chevron-down"></i>
+              </span>
+            </span>
+          </a>
+          <div class="collapse" id="Accounts">
+            <ul class="navbar-nav ps-3">
+              <li>
+                <a href="{% url 'addnewaccount' %}" class="nav-link px-3">
+                  <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+                  <span>Add New Account</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse" id="Accounts">
+            <ul class="navbar-nav ps-3">
+              <li>
+                <a href="{% url 'account-list' %}" class="nav-link px-3">
+                  <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+                  <span>Accounts List</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="{% url 'transaction-history' %}" class="nav-link px-3">
+            <span class="me-2"><i class="bi bi-book-fill"></i></span>
+            <span>Transaction History</span>
+          </a>
+        </li>
+        <li class="my-4">
+          <hr class="dropdown-divider bg-light" />
+        </li>
+        <li>
+          <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+            Income
+          </div>
+        </li>
+        <li>
+          <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#Income">
+            <span class="me-2"><i class="bi bi-layout-split"></i></span>
+            <span>Income</span>
+            <span class="ms-auto">
+              <span class="right-icon">
+                <i class="bi bi-chevron-down"></i>
+              </span>
+            </span>
+          </a>
+          <div class="collapse" id="Income">
+            <ul class="navbar-nav ps-3">
+              <li>
+                <a href="{% url 'add-income-record' %}" class="nav-link px-3">
+                  <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+                  <span>Add  Income Record</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse" id="Income">
+            <ul class="navbar-nav ps-3">
+              <li>
+                <a href="{% url 'category-list' %}" class="nav-link px-3">
+                  <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+                  <span>Income Category</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="{% url 'income-record-list' %}" class="nav-link px-3">
+            <span class="me-2"><i class="bi bi-book-fill"></i></span>
+            <span>Income History</span>
+          </a>
+        </li>
+        <li class="my-4">
+          <hr class="dropdown-divider bg-light" />
+        </li>
+        <li>
+          <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+            Expanse
+          </div>
+        </li>
+        <li>
+          <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#Expanse">
+            <span class="me-2"><i class="bi bi-layout-split"></i></span>
+            <span>Expanse</span>
+            <span class="ms-auto">
+              <span class="right-icon">
+                <i class="bi bi-chevron-down"></i>
+              </span>
+            </span>
+          </a>
+          <div class="collapse" id="Expanse">
+            <ul class="navbar-nav ps-3">
+              <li>
+                <a href="{% url 'add-expanse-record' %}" class="nav-link px-3">
+                  <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+                  <span>Add  Expanse Record</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse" id="Expanse">
+            <ul class="navbar-nav ps-3">
+              <li>
+                <a href="{% url 'expanse-category-list' %}" class="nav-link px-3">
+                  <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+                  <span>Expanse Category</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="{% url 'expanse-record-list' %}" class="nav-link px-3">
+            <span class="me-2"><i class="bi bi-book-fill"></i></span>
+            <span>Expanse History</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'logout' %}" class="nav-link px-3 fixed-bottom ">
+            <span class="me-2 "><i class="btn btn-danger">Logout</i></span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

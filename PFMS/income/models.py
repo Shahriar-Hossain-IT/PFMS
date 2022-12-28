@@ -1,10 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 import datetime
 from accounts.models import Accounts
 
 
 
 class Income_Category(models.Model):
+    user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     category = models.CharField(max_length=20)
 
     def __str__(self):

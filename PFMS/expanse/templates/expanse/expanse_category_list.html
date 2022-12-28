@@ -10,7 +10,6 @@
   <table class="table table-dark table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Category</th>
         <th scope="col">Edit</th>
         
@@ -19,9 +18,8 @@
     <tbody>
       {% for category in object_list %}  
       <tr>
-        <th scope="row">{{category.id}}</th>
-        <td>{{category.category}}</td>
-        <td>Otto</td>
+        <th scope="row">{{category.category}}</th>
+        <td><a href="{% url 'update-expanse-category' category.id %}" class="btn btn-danger active" role="button"><i class="bi bi-pencil-square"></i></a></td>
       </tr>
       {% empty %}
         <h3>No Category Added. Please Add One Category</h3>

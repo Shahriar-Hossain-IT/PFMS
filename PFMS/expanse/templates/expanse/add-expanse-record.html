@@ -1,14 +1,12 @@
 {% extends  "main.html" %}
 {{ form.media }}
 
-{% block header %}
- Add New Account
-{% endblock %}
+
 
 
 {% block body %}
 <div class='container form-group d-flex'>
-  <form action='' method='post' class="row mx-auto  ">
+  <form action='' method='post' class="row mx-auto  text-white">
 
     {% csrf_token %}
     {{form.as_p}}

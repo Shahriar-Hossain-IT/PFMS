@@ -23,5 +23,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('income/', include('income.urls')),
     path('expanse/', include('expanse.urls')),
+    path('__debug__/', include('debug_toolbar.urls')),
     
 ]
