@@ -8,7 +8,7 @@ import datetime
 from.filters import ExpanseRecordFilter
 from .models import Expanse_Record, Expanse_Category
 from .forms import AddNewExpanseRecord, AddNewExpanseCategory, UpdateExpanseCategory, UpdateExpanseRecord
-from accounts.models import Account_Transaction, Accounts
+from accounts.models import AccountTransaction, Accounts
 
 # Create your views here.
 @login_required
@@ -17,7 +17,7 @@ def add_new_expanse_record_form(request):
     form = AddNewExpanseRecord(user, request.POST or None)
     if form.is_valid():
         form.save()
-        expanse_record = Account_Transaction.objects.create(account_transaction_type='D', account=form.instance.account, ammount=form.data['ammount'],transaction_summary=form.data['details'])
+        expanse_record = AccountTransaction.objects.create(account_transaction_type='D', account=form.instance.account, ammount=form.data['ammount'],transaction_summary=form.data['details'])
 
         account = Accounts.objects.get(pk=form.data['account'])
         account.account_balance = account.account_balance - float(form.data['ammount'])
@@ -49,7 +49,7 @@ class ExpanseRecordList(LoginRequiredMixin,ListView):
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context['object_list'] = context['object_list'].filter(account__user =  self.request.user)
-        context['form'] = ExpanseRecordFilter(self.request.GET,request=self.request, queryset= context['object_list'].order_by('-date'))
+        context['form'] = ExpanseRecordFilter(self.request.GET,request=self.request, queryset= context['object_list'].select_related('category').order_by('-date'))
         context['object_list'] = context['form'].qs
         return context
 

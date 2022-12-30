@@ -18,10 +18,11 @@ class Accounts(models.Model):
         return self.account_name
 
 
-class Account_Transaction(models.Model):
+class AccountTransaction(models.Model):
     Transaction_Type = (
         ('C', 'Credit'),
         ('D', 'Debit'),
+        ('T', 'Transfer'),
     )
     account = models.ForeignKey(Accounts, null=False, on_delete=models.CASCADE)
     account_transaction_type = models.CharField(max_length=1, choices=Transaction_Type, null=False)
@@ -31,3 +32,14 @@ class Account_Transaction(models.Model):
 
     def __str__(self):
         return self.account.account_name
+
+
+class InterAccountTransaction(models.Model):
+    from_account = models.ForeignKey(Accounts, null=False, on_delete=models.CASCADE, related_name ='from_account')
+    to_account = models.ForeignKey(Accounts, null=False, on_delete=models.CASCADE, related_name ='to_account')
+    amount = models.FloatField(null=False)
+    details = models.TextField(null=True)
+    date = models.DateField(null=False, default= datetime.date.today)
+
+    def __str__(self):
+        return (f'{self.from_account.account_name} - {self.to_account.account_name} - {self.amount}')

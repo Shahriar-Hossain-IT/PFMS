@@ -130,7 +130,5 @@ dmypy.json
 
 
 #custom
-secret.py
-
-migrations/
 .vscode/
+extra/

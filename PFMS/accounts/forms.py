@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Accounts
+from .models import Accounts,InterAccountTransaction
 
 
 class AddNewAccountForm(ModelForm):
@@ -29,3 +29,23 @@ class UpdateAccountForm(ModelForm):
             'custodial_name': forms.TextInput(attrs={'class':'form-control'}),
             
         }
+
+
+class AddNewInterAccountTransactionRecord(ModelForm):
+    class Meta:
+        model = InterAccountTransaction
+        fields = ('from_account','to_account', 'amount', 'details','date')
+
+        widgets = {
+            'from_account': forms.Select(attrs={'class':'form-control '}),
+            'to_account': forms.Select(attrs={'class':'form-control '}),
+            'amount': forms.NumberInput(attrs={'class':'form-control', 'step': 0.01}),
+            'details': forms.TextInput(attrs={'class':'form-control '}),
+            'date' : forms.DateInput(attrs= {'class':'form-control', 'type':'date' })
+            
+        }
+
+    def __init__(self, user, *args, **kwargs):
+        super(AddNewInterAccountTransactionRecord, self).__init__(*args, **kwargs)
+        self.fields['from_account'].queryset = Accounts.objects.filter(user = user)
+        self.fields['to_account'].queryset = Accounts.objects.filter(user = user)

@@ -1,6 +1,6 @@
 import django_filters
 from django_filters import filters
-from .models import Accounts, Account_Transaction
+from .models import Accounts, AccountTransaction
 
 
 def account(request):
@@ -15,7 +15,7 @@ class TransactionRecordFilter( django_filters.FilterSet):
     date = filters.DateRangeFilter()
 
     class Meta:
-        model = Account_Transaction
+        model = AccountTransaction
         fields = '__all__'
         exclude = ['transaction_summary']
 

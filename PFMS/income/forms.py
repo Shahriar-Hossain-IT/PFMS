@@ -7,14 +7,14 @@ from accounts.models import Accounts
 class AddNewIncomeRecord( ModelForm):
     class Meta:
         model = Income_Record
-        fields = ('account','category', 'ammount', 'details')
+        fields = ('account','category', 'ammount', 'details', 'date')
 
         widgets = {
             'account': forms.Select(attrs={'class':'form-control '}),
             'category': forms.Select(attrs={'class':'form-control'}),
             'ammount': forms.NumberInput(attrs={'class':'form-control'}),
-            'details': forms.TextInput(attrs={'class':'form-control '})
-            
+            'details': forms.TextInput(attrs={'class':'form-control '}),
+            'date' : forms.DateInput(attrs= {'class':'form-control', 'type':'date' })
         }
     # thanks to https://stackoverflow.com/a/68544098
     def __init__(self, user, *args, **kwargs):

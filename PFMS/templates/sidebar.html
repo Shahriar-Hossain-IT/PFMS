@@ -55,6 +55,12 @@
           </div>
         </li>
         <li>
+          <a href="{% url 'inter-account-transaction' %}" class="nav-link px-3">
+            <span class="me-2"><i class="bi bi-book-fill"></i></span>
+            <span>Inter Account Transaction</span>
+          </a>
+        </li>
+        <li>
           <a href="{% url 'transaction-history' %}" class="nav-link px-3">
             <span class="me-2"><i class="bi bi-book-fill"></i></span>
             <span>Transaction History</span>
@@ -69,7 +75,7 @@
           </div>
         </li>
         <li>
-          <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#Income">
+          <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#Income" id="Income-Dropdown">
             <span class="me-2"><i class="bi bi-layout-split"></i></span>
             <span>Income</span>
             <span class="ms-auto">
@@ -81,9 +87,9 @@
           <div class="collapse" id="Income">
             <ul class="navbar-nav ps-3">
               <li>
-                <a href="{% url 'add-income-record' %}" class="nav-link px-3">
+                <a href="{% url 'add-income-record' %}" class="nav-link px-3" id="Add-Income-Record">
                   <span class="me-2"><i class="bi bi-speedometer2"></i></span>
-                  <span>Add  Income Record</span>
+                  <span>Add Income Record</span>
                 </a>
               </li>
             </ul>

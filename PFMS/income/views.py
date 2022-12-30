@@ -8,7 +8,7 @@ from .filters import IncomeRecordFilter
 ##
 from .models import Income_Record, Income_Category
 from .forms import AddNewIncomeRecord, AddNewIncomeCategory,UpdateIncomeCategory,UpdateIncomeRecord
-from accounts.models import Account_Transaction, Accounts
+from accounts.models import AccountTransaction, Accounts
 
 
 # Create your views here.
@@ -18,7 +18,7 @@ def add_new_income_record_form(request):
     form = AddNewIncomeRecord(user, request.POST or None)
     if form.is_valid():
         form.save()
-        income_record = Account_Transaction.objects.create(account_transaction_type='C', account=form.instance.account, ammount=form.data['ammount'],transaction_summary=form.data['details'])
+        income_record = AccountTransaction.objects.create(account_transaction_type='C', account=form.instance.account, ammount=form.data['ammount'],transaction_summary=form.data['details'])
 
         account = Accounts.objects.get(pk=form.data['account'])
         account.account_balance = account.account_balance + float(form.data['ammount'])
@@ -57,7 +57,7 @@ class IncomeRecordList(LoginRequiredMixin,ListView):
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context['object_list'] = context['object_list'].filter(account__user =  self.request.user)
-        context['form'] = IncomeRecordFilter(self.request.GET,request=self.request, queryset= context['object_list'].order_by('-date'))
+        context['form'] = IncomeRecordFilter(self.request.GET,request=self.request, queryset= context['object_list'].select_related('category').order_by('-date'))
         context['object_list'] = context['form'].qs
         return context
 
