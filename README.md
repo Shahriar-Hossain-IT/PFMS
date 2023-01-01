@@ -4,14 +4,18 @@
 ![PFMS Logo](https://shahriarhossain.com/pfms.shahriarhossain.com/Asset/Image/PFMS.png)
 
 ## It’s a Personal Finance Management System. A place where an individual can track personal finance. 
-
 ___
 
-> Just a heads up this repository is going to contain lots & lots of mistakes, ugly code & some bullshit logics.  
-I am trying to learn as i build the project.  
-Please let me know if you have any suggestions or if you find any Security Issue.
-Thank You.
+> [Demo](https://shahriarhossain1.pythonanywhere.com/)  
+User Name: demo  
+Password: pfms@demo1
+___
 
+> #### !!! Important !!!
+> Just a heads up this repository is going to contain lots & lots of mistakes, ugly code & some bullshit logics.  
+I am trying to learn as I build the project.  
+Please let me know if you have any suggestions or if you find any Security Issue.  
+Thank You.
 ___
 
 ### Different parts of the Project:

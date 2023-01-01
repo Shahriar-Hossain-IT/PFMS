@@ -132,3 +132,4 @@ dmypy.json
 #custom
 .vscode/
 secret.py
+extra/
