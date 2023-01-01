@@ -20,7 +20,7 @@
         <div class="col-md-4 col-xl-3">
             <div class="card  bg-c-pink order-card">
                 <div class="card-block">
-                    <h6 class="m-b-20">Total Expanse</h6>
+                    <h6 class="m-b-20">Total Expense</h6>
                     <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span class="mx-3">{{expanse_data}}</span>
                     </h2>
                     <p class="m-b-0">Last Month Summery<span class="f-right">{{last_month_expanse_data}}</span></p>
@@ -76,7 +76,7 @@
         var data =google.visualization.arrayToDataTable( {{category | safe}});
 
         var options = {
-          title: 'Monthly Expanse Record Category Wise',
+          title: 'Monthly Expense Record Category Wise',
           'is3D':true,
           legend: { position: 'bottom' }
         };
@@ -93,7 +93,7 @@
         var data = google.visualization.arrayToDataTable({{line_chart_data | safe}});
 
         var options = {
-          title: 'Income Vs Expanse Summery Of the Whole Year',
+          title: 'Income Vs Expense Summery Of the Whole Year',
           curveType: 'function',
           legend: { position: 'bottom' }
         };

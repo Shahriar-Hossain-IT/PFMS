@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
   <link rel="stylesheet" type="text/css" href="{% static '/css/style.css'%}">
   <title>PFMS | Personal Finance Management System</title>
+  <link rel="icon" type="image/x-icon" href="{% static '/img/fav-icon.svg'%}">
 </head>
 
 <body class="bg-dark">
@@ -18,10 +19,10 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom border-white border-3">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
-        aria-controls="offcanvasExample">
+        aria-controls="offcanvasExample"> 
         <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
       </button>
-      <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="{% url 'dashboard' %}">PFMS</a>
+      <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="{% url 'dashboard' %}"><img src="{% static '/img/nav-brand-light.svg'%}" alt="" width="60" height="44"></a>
 
     </div>
   </nav>
