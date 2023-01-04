@@ -1,0 +1,146 @@
+{% extends  "base.html" %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/landing-page.css'%}">
+{% endblock %}
+
+{% block body %}
+ {% comment %} Thanks to: https://github.com/RaddyTheBrand/21__GorillaCoffee-Bootstrap-Landing-Page {% endcomment %}
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <div class="container-fluid">
+   <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href=""><img src="{% static '/img/nav-brand-light.svg'%}" alt="" width="60" height="44"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class='me-auto'>
+        </div>
+        <div class='navbar-nav me-lg-5' >
+            <button class="btn btn-outline-primary me-lg-3" type="submit">Sign Up</button>
+            <button class="btn btn-outline-success me-lg-5" type="submit">Login</button>
+        </div>
+      
+    </div>
+  </div>
+</nav>
+  <section class="hero">
+
+    <div class="hero__overlay"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" loading="lazy" class="hero__video">
+      <source src="{% static 'video/product-demo.mp4'%}" type="video/mp4">
+    </video>
+
+    <div class="hero__content h-100 container-custom position-relative">
+      <div class="d-flex h-100 align-items-center hero__content-width">
+        <div class="text-white">
+          <h1 class="hero__heading fw-bold mb-4">Keep Track Of Your Finance Like Never Befor</h1>
+          <p class="lead mb-4">PFMS - Personal Finance Management System</p>
+          <a href="#" class="mt-2 btn btn-lg btn-outline-light" role="button">Sign Up</a>
+          <span> Or </span>
+          <a href="#" class="mt-2 btn btn-lg btn-outline-light" role="button">Login</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#scroll-down" class="hero__scroll-btn">
+      Explore <i class="bi bi-arrow-down-short"></i>
+    </a>
+
+  </section>
+
+
+  <a id="scroll-down"></a>
+
+  <section class="steps container-custom">
+
+    <div class="row">
+      <div class="col-12 col-sm-6 d-md-flex justify-content-md-ceneter">
+        <img src="{% static 'img/Landing-page/dashboard.png'%}" alt="Coffe Flavour" class="img-fluid pb-4 steps__section-thumbnail" width="553" height="746" loading="lazy">
+      </div>
+
+      <div class="col-12 col-sm-6 align-self-center justify-content-md-ceneter">
+
+        <div class="steps__content-width">
+          <span>01</span>
+          <h1 class="h2 mb-4">Intarective Dashboard with Income & Expense Summary</h1>
+          <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia totam dolorem quasi! Quis fugiat totam id fuga non distinctio incidunt amet nesciunt itaque, tempore repellat eos natus quo mollitia laborum.</p>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section class="steps steps--background">
+
+    <div class="container-custom">
+
+      <div class="row">
+        <div class="col-12 col-sm-6 d-md-flex justify-content-md-ceneter order-sm-1">
+          <img src="{% static 'img/Landing-page/dashboard.png'%}" alt="Health Benefits" class="img-fluid pb-4 steps__section-thumbnail" width="553" height="746" loading="lazy">
+        </div>
+
+        <div class="col-12 col-sm-6 align-self-center justify-content-md-ceneter">
+          <div class="steps__content-width">
+            <span>02</span>
+            <h1 class="h2 mb-4">Add Multiple Bank, Mobile finance & Cash in hand account</h1>
+            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia totam dolorem quasi! Quis fugiat totam id fuga non distinctio incidunt amet nesciunt itaque, tempore repellat eos natus quo mollitia laborum.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="steps container-custom">
+
+    <div class="row">
+      <div class="col-12 col-sm-6 d-md-flex justify-content-md-ceneter">
+        <img src="{% static 'img/Landing-page/dashboard.png'%}" alt="Essential Nutrients" class="img-fluid pb-4 steps__section-thumbnail" width="553" height="746" loading="lazy">
+      </div>
+
+      <div class="col-12 col-sm-6 align-self-center justify-content-md-ceneter">
+
+        <div class="steps__content-width">
+          <span>03</span>
+          <h1 class="h2 mb-4"> Investment Record & Tracking (Stock, Crypto)</h1>
+          <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia totam dolorem quasi! Quis fugiat totam id fuga non distinctio incidunt amet nesciunt itaque, tempore repellat eos natus quo mollitia laborum.</p>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+  <section class="bg-dark text-white py-4">
+    <div class="container-custom my-4">
+      <div class="row">
+
+        <div class="col-12 col-sm-4 mb-4">
+          <img src="{% static 'img/Landing-page/dashboard.png'%}" class="mb-4 img-fluid" alt="Coffe Flavour" width="441" height="248" loading="lazy">
+          <h3>Inter Account Transaction System</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A veniam ullam illo dolorum dolor. Dolor, velit vitae? Fugiat quidem nostrum nobis sit beatae consequuntur quisquam iusto reprehenderit voluptatibus officia? Natus.</p>
+        </div>
+
+        <div class="col-12 col-sm-4 mb-4">
+          <img src="{% static 'img/Landing-page/dashboard.png'%}" class="mb-4 img-fluid" alt="Health Benefits" width="441" height="248" loading="lazy">
+          <h3>Income Record</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A veniam ullam illo dolorum dolor. Dolor, velit vitae? Fugiat quidem nostrum nobis sit beatae consequuntur quisquam iusto reprehenderit voluptatibus officia? Natus.</p>
+        </div>
+
+        <div class="col-12 col-sm-4 mb-4">
+          <img src="{% static 'img/Landing-page/dashboard.png'%}" class="mb-4 img-fluid" alt="Essential Nutrients" width="441" height="248" loading="lazy">
+          <h3>Expanse Record</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A veniam ullam illo dolorum dolor. Dolor, velit vitae? Fugiat quidem nostrum nobis sit beatae consequuntur quisquam iusto reprehenderit voluptatibus officia? Natus.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+    
+
+{% endblock %}
