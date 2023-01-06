@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 import secret
 
 
@@ -57,9 +58,6 @@ INSTALLED_APPS = [
 ]
 
 
-if DEBUG:
-    INSTALLED_APPS.append('debug_toolbar')
-    INTERNAL_IPS = secret.INTERNAL_IPS
 
 
 
@@ -117,7 +115,12 @@ AUTHENTICATION_BACKENDS = [
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
+
 AUTH_PASSWORD_VALIDATORS = [
+]
+
+
+PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
@@ -133,6 +136,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+if DEBUG:
+    #INSTALLED_APPS.append('debug_toolbar')
+    #INTERNAL_IPS = secret.INTERNAL_IPS
+    pass
+else:
+    for i in PASSWORD_VALIDATORS:
+        AUTH_PASSWORD_VALIDATORS.append(i)
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -145,7 +156,8 @@ USE_I18N = True
 USE_TZ = True
 
 
-LOGIN_URL = 'accounts/login/'
+LOGIN_URL = 'account_login'
+LOGIN_REDIRECT_URL = 'profile-page-url'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -188,15 +200,19 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
-ACCOUNT_AUTHENTICATION_METHOD ="email"
+ACCOUNT_AUTHENTICATION_METHOD ="username_email"
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = LOGIN_URL
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL =None
 ACCOUNT_EMAIL_CONFIRMATION_HMAC =True
-ACCOUNT_EMAIL_REQUIRED =True
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_REQUIRED =False
+ACCOUNT_EMAIL_VERIFICATION = "optional"
 ACCOUNT_DEFAULT_HTTP_PROTOCOL ="http"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+ACCOUNT_USERNAME_REQUIRED = True
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')

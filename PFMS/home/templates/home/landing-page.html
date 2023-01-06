@@ -1,8 +1,7 @@
 {% extends  "base.html" %}
 {% load static %}
 
-
-{% block css %}
+{% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static '/css/landing-page.css'%}">
 {% endblock %}
 
@@ -18,8 +17,8 @@
         <div class='me-auto'>
         </div>
         <div class='navbar-nav me-lg-5' >
-            <button class="btn btn-outline-primary me-lg-3" type="submit">Sign Up</button>
-            <button class="btn btn-outline-success me-lg-5" type="submit">Login</button>
+            <a class="btn btn-primary me-lg-3 mt-2" href="{% url 'account_signup' %}">Sign Up</a>
+            <a class="btn btn-success me-lg-3 mt-2" href="{% url 'account_login' %}">Login</a>
         </div>
       
     </div>
@@ -37,9 +36,9 @@
         <div class="text-white">
           <h1 class="hero__heading fw-bold mb-4">Keep Track Of Your Finance Like Never Befor</h1>
           <p class="lead mb-4">PFMS - Personal Finance Management System</p>
-          <a href="#" class="mt-2 btn btn-lg btn-outline-light" role="button">Sign Up</a>
+          <a href="{% url 'account_signup' %}" class="mt-2 btn btn-lg btn-outline-light" role="button">Sign Up</a>
           <span> Or </span>
-          <a href="#" class="mt-2 btn btn-lg btn-outline-light" role="button">Login</a>
+          <a href="{% url 'account_login' %}" class="mt-2 btn btn-lg btn-outline-light" role="button">Login</a>
         </div>
       </div>
     </div>

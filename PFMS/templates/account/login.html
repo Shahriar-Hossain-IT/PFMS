@@ -3,58 +3,50 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% load account socialaccount %}
-{% block css %}
+{% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static '/css/all_auth.css'%}">
 {% endblock %}
 
 
+
 {% block content %}
 
-
+{% include 'navbar.html' %}
+{% include 'messages.html' %}
 <div class="container">
   <div class="row">
-    <div class="col-lg-10 col-xl-9 mx-auto">
+    <div class="col-lg-12 col-xl-9 mx-auto">
       <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
         <div class="card-img-left d-none d-md-flex">
-          <!-- Background image for card set in CSS! -->
+          
         </div>
         <div class="card-body p-4 p-sm-5">
           <h5 class="card-title text-center mb-5 fw-light fs-5">Log In</h5>
           <form class="login card-body cardbody-color p-lg-5" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
-            {% crispy form %}
+            {{ form | crispy }}
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
             <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-            <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+            <div class="d-grid mb-2">
+              <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">{% trans "Sign In" %}</button>
+            </div>
           </form>
-          {% get_providers as socialaccount_providers %}
 
-          {% if socialaccount_providers %}
-          <a class="button secondaryAction" href=""></a>
-
-          <div class="socialaccount_ballot">
-
-            <ul class="socialaccount_providers">
-              {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-            </ul>
-          </div>
+          <hr class="my-4">
         </div>
       </div>
     </div>
   </div>
 </div>
 
-{% include "socialaccount/snippets/login_extra.html" %}
-
-{% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-{% endif %}
 
 
 
 {% endblock %}
 
+
+
+<a class="d-block text-center mt-2 small" href="{{ login_url }}">Have an account? Sign In</a>
 

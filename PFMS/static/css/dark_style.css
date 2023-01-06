@@ -3,15 +3,17 @@ body,
 button {
   font-family: "Inter", sans-serif;
 }
+
+body{
+    background-color: #212529;
+    color: white;
+}
+
+
 :root {
   --offcanvas-width: 270px;
   --topNavbarHeight: 56px;
 }
-
-body{
-  background-color: white;
-}
-
 
 
 html {scroll-behavior: smooth;}
