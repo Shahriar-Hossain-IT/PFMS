@@ -15,6 +15,11 @@
         <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
       </button>
       <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href=""><img src="{% static '/img/nav-brand-light.svg'%}" alt="" width="60" height="44"></a>
+      <div class="fixed-end me-lg-5 ">
+        <a href="{% url 'profile-page-url' %)"><i class="bi bi-person-circle text-white" style="font-size: 2rem;"></i></a>
+      </div>
+      
+
 
     </div>
   </nav>
@@ -43,15 +48,6 @@
 
   </script>
 
-  <script  type="text/javascript">
-    function boxDisable(t) {
-    if (t.is(':checked')) {
-      swapStyles('style.css');
-    } else {
-      swapStyles('dark_style.css');
-    }
-    }
-  </script>
 
   <script type="text/javascript">
 
@@ -80,7 +76,6 @@
     function swapStyles(sheet) {
       document.getElementById('mystylesheet').href = cssFile + '/' + sheet
       localStorage.setItem('theme', sheet)
-
       updateTheme(sheet)
     }
 

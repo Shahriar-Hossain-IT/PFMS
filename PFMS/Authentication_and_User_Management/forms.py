@@ -13,4 +13,4 @@ class UserMoreInfoForm(ModelForm):
     class Meta:
         model = Profile
         fields = '__all__'
-        exclude = {'user','birth_date','theme_name', 'theme_value'}
+        exclude = {'user','birth_date','theme_name', 'theme_value', 'upload',}
