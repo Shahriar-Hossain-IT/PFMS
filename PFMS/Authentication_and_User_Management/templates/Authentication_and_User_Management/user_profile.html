@@ -1,35 +1,40 @@
 {% extends "main.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-
+{% load account %}
+{% load i18n %}
 {% block main %}
 
 <!-- https://bootsnipp.com/snippets/K0ZmK -->
 <div class="container emp-profile">
-    <form method="post">
         <div class="row">
             <div class="col-md-2">
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
-                            <h5>
-                                {{user.get_full_name}}
-                            </h5>
-                            <h6>
-                                {{user.profile.occupation}}
-                            </h6>
-                            <p class="proile-rating">Last Login: <span>{{user.last_login}}</span></p>
-                            <p class="proile-rating">You IP Address: <span>{{user_ip}}</span></p>
+                    <h5>
+                        {{user.get_full_name}}
+                    </h5>
+                    <h6>
+                        {{user.profile.occupation}}
+                    </h6>
+                    <p class="proile-rating">Last Login: <span>{{user.last_login}}</span></p>
+                    <p class="proile-rating">You IP Address: <span>{{user_ip}}</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                                aria-selected="true">About</button>
                         </li>
-                        <li class="nav-item ms-2">
-                            <a class="nav-link active" data-toggle="tab" href="{% url 'profile-update-page-url' %}" role="tab" aria-controls="home" aria-selected="true"><i class="bi bi-gear me-2"></i>Edit Profile</a>
+                        <li class="nav-item ms-2" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#profile-tab-pane" type="button" role="tab"
+                                aria-controls="profile-tab-pane" aria-selected="false"><i
+                                    class="bi bi-gear me-2"></i>Edit Profile</button>
                         </li>
                     </ul>
-
                 </div>
+                
             </div>
         </div>
         <div class="row mt-lg-5">
@@ -37,33 +42,68 @@
             </div>
             <div class="col-md-6">
                 <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>User Name</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{user.username}}</p>
-                                    </div>
+                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+                        tabindex="0">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>User Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.username}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.email}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Theme</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="">
+                                    <button class="btn btn-light me-lg-2 border border-dark" onclick="swapStyles('style.css')">Light Mode</button>
+                                    <button class="btn btn-dark border border-white" onclick="swapStyles('dark_style.css')">Dark Mode</button>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Email</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{user.email}}</p>
-                                    </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <label>Password</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    {% url 'account_change_password' as the_url %}
+                                    <a href="{{ the_url }}" class="btn btn-dark border border-white"> Change Password</a>
                                 </div>
-
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                        <form method="post" class="login card-body cardbody-color p-lg-2" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ basic_info_form | crispy }}
+                            {{ more_info_form | crispy }}
+                    
+                            <div class="d-grid mb-2">
+                                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Save</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+
                 {% csrf_token %}
-                <button class="btn btn-light" onclick="swapStyles('style.css')">Light Mode</button>
-                <button class="btn btn-dark" onclick="swapStyles('dark_style.css')">Dark Mode</button>
+                
+                
                 
             </div>
         </div>
-    </form>           
 </div>
 
 {% endblock %}

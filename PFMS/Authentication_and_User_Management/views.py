@@ -22,27 +22,20 @@ def get_ip_address(request):
 @login_required
 def profile_page_view(request):
     user = User.objects.get(pk=request.user.id)
-    context = {
-        'user':user,
-        'user_ip': get_ip_address(request)
-    }
-
-    return render(request, "Authentication_and_User_Management/user_profile.html", context)
-
-@login_required
-def profile_update_page_view(request):
-    user = User.objects.get(pk=request.user.id)
     basic_info_form = UserBasicInfoForm(request.POST or None, instance=user)
-    more_info_form = UserMoreInfoForm(request.POST,request.FILES, instance=user.profile)
+    more_info_form = UserMoreInfoForm(request.POST or None, instance=user.profile)
     if basic_info_form.is_valid() and more_info_form.is_valid():
         basic_info_form.save()
         more_info_form.save()
         return redirect('profile-page-url')
     context = {
+        'user':user,
+        'user_ip': get_ip_address(request),
         "basic_info_form": basic_info_form,
         "more_info_form" : more_info_form
     }
-    return render(request, "Authentication_and_User_Management/user_profile_update.html", context)
+
+    return render(request, "Authentication_and_User_Management/user_profile.html", context)
 
 @login_required
 def userSettings(request):

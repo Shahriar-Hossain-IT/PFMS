@@ -16,7 +16,8 @@
       </button>
       <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href=""><img src="{% static '/img/nav-brand-light.svg'%}" alt="" width="60" height="44"></a>
       <div class="fixed-end me-lg-5 ">
-        <a href="{% url 'profile-page-url' %)"><i class="bi bi-person-circle text-white" style="font-size: 2rem;"></i></a>
+        {% url 'profile_page_url' as the_url %}
+        <a href="{{ the_url }}"><i class="bi bi-person-circle text-white" style="font-size: 2rem;"></i></a>
       </div>
       
 
@@ -92,11 +93,7 @@
       })
         .then((response) => response.json())
         .then(function (data) {
-
-          console.log('Data:', data)
-
           var theme = data.theme_value;
-
           if (theme == 'style.css' || null) {
             swapStyles('style.css')
             document.getElementById("theme_button").checked = true;
