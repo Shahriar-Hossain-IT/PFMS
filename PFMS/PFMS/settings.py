@@ -55,6 +55,9 @@ INSTALLED_APPS = [
 
     'home',
     'Authentication_and_User_Management',
+    'BAM',
+    'income',
+    'expense',
 ]
 
 

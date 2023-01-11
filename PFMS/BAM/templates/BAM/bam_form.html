@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{{ form.media }}
+{% block main %}
+
+<div class='container form-group d-flex'>
+  <form action='' method='post' class="row mx-auto">
+
+    {% csrf_token %}
+    {{ form | crispy }}
+    <input type='submit' class='btn btn-outline-success'>
+
+</div>
+{% endblock %}
+

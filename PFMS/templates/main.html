@@ -26,7 +26,7 @@
   </nav>
   <!-- top navigation bar -->
   <!-- offcanvas -->
-  {% include 'sidebar.html' %}
+  {% include 'sidebar2.html' %}
   {% csrf_token %}
   <!-- offcanvas -->
   <main class="mt-5 pt-5">
@@ -48,7 +48,6 @@
     {% block script %} {% endblock %}
 
   </script>
-
 
   <script type="text/javascript">
 
@@ -80,7 +79,6 @@
       updateTheme(sheet)
     }
 
-
     function loadSettings() {
       //Call data and set local storage
 
@@ -96,10 +94,8 @@
           var theme = data.theme_value;
           if (theme == 'style.css' || null) {
             swapStyles('style.css')
-            document.getElementById("theme_button").checked = true;
           } else if (theme == 'dark_style.css') {
             swapStyles('dark_style.css')
-            document.getElementById("theme_button").checked = false;
           }
 
 
