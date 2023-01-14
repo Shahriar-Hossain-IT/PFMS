@@ -52,12 +52,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     
-
+    'dashboard',
     'home',
     'Authentication_and_User_Management',
     'BAM',
     'income',
-    'expense',
+    'expense'
 ]
 
 
@@ -164,6 +164,8 @@ LOGIN_REDIRECT_URL = 'profile_page_url'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+STATIC_ROOT = BASE_DIR/ 'staticfiles'
 
 STATIC_URL = '/static/'
 
