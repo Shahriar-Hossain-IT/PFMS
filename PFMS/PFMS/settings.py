@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 import secret
 
 
@@ -42,18 +43,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    "crispy_bootstrap5",
     'django_filters',
-    'userauth',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+    
     'dashboard',
-    'accounts',
+    'home',
+    'Authentication_and_User_Management',
+    'BAM',
     'income',
-    'expanse'
+    'expense'
 ]
 
 
-if DEBUG:
-    INSTALLED_APPS.append('debug_toolbar')
-    INTERNAL_IPS = secret.INTERNAL_IPS
 
 
 
@@ -101,12 +108,22 @@ DATABASES ={'default':
 
 
 
+AUTHENTICATION_BACKENDS = [
 
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
+
 AUTH_PASSWORD_VALIDATORS = [
+]
+
+
+PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
@@ -122,6 +139,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+if DEBUG:
+    #INSTALLED_APPS.append('debug_toolbar')
+    #INTERNAL_IPS = secret.INTERNAL_IPS
+    pass
+else:
+    for i in PASSWORD_VALIDATORS:
+        AUTH_PASSWORD_VALIDATORS.append(i)
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -134,10 +159,13 @@ USE_I18N = True
 USE_TZ = True
 
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'account_login'
+LOGIN_REDIRECT_URL = 'profile_page_url'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+STATIC_ROOT = BASE_DIR/ 'staticfiles'
 
 STATIC_URL = '/static/'
 
@@ -149,3 +177,47 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+SITE_ID = 1
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '123',
+            'secret': '456',
+            'key': ''
+        }
+    }
+}
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FORM  = 'ssowad12@gmail.com'
+EMAIL_HOST_USER = secret.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = secret.EMAIL_HOST_PASSWORD
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+ACCOUNT_AUTHENTICATION_METHOD ="username_email"
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = LOGIN_URL
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL =None
+ACCOUNT_EMAIL_CONFIRMATION_HMAC =True
+ACCOUNT_EMAIL_REQUIRED =True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_DEFAULT_HTTP_PROTOCOL ="http"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+ACCOUNT_USERNAME_REQUIRED = True
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')

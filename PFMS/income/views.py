@@ -7,36 +7,73 @@ from .filters import IncomeRecordFilter
 
 ##
 from .models import Income_Record, Income_Category
-from .forms import AddNewIncomeRecord, AddNewIncomeCategory,UpdateIncomeCategory,UpdateIncomeRecord
-from accounts.models import AccountTransaction, Accounts
+from .forms import IncomeRecordForm, IncomeCategoryForm
+from BAM.models import Accounts
 
 
 # Create your views here.
 @login_required
-def add_new_income_record_form(request):
+def add_income_record_view(request):
     user = request.user
-    form = AddNewIncomeRecord(user, request.POST or None)
+    form = IncomeRecordForm(user, request.POST or None)
     if form.is_valid():
-        form.save()
-        income_record = AccountTransaction.objects.create(account_transaction_type='C', account=form.instance.account, ammount=form.data['ammount'],transaction_summary=form.data['details'])
-
         account = Accounts.objects.get(pk=form.data['account'])
-        account.account_balance = account.account_balance + float(form.data['ammount'])
+        account.account_balance = account.account_balance + float(form.data['amount'])
         account.last_update_date = datetime.datetime.now()
         account.save()
-        form = AddNewIncomeRecord(user)
+        form.save()
+        form = IncomeRecordForm(user)
+    context = {
+        'form': form
+    }
+    return render(request, "income/income_form.html", context)
+
+@login_required
+def add_income_category_view(request):
+    form = IncomeCategoryForm(request.POST or None)
+    if form.is_valid():
+        Income_Category = form.save(commit=False) 
+        Income_Category.user = request.user
+        Income_Category.save() 
+        return redirect('income-category-list')
         
     context = {
         'form': form
     }
-    return render(request, "income/add-income-record.html", context)
+    return render(request, "income/income_form.html", context)
 
+
+@login_required
+def update_income_category_view(request,pk):
+    category=Income_Category.objects.get(pk=pk)
+    form = IncomeCategoryForm(request.POST or None, instance=category)
+    if form.is_valid():
+        form.save() 
+        return redirect('income-category-list')
+        #form.save()
+        
+    context = {
+        'form': form
+    }
+    return render(request, "income/income_form.html", context)
+
+@login_required
+def update_income_record_view(request,pk):
+    record = Income_Record.objects.get(pk=pk)
+    user = request.user
+    form = IncomeRecordForm(user, request.POST or None, instance=record )
+    if form.is_valid():
+        form.save()
+        return redirect('income-record-list')
+    context = {
+        'form': form
+    }
+    return render(request, "income/income_form.html", context)
 
 
 class CategoryList(LoginRequiredMixin,ListView):
     model = Income_Category
     context_object_name = 'object_list'
-
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context['object_list'] = context['object_list'].filter(user =  self.request.user)
@@ -48,59 +85,11 @@ class CategoryList(LoginRequiredMixin,ListView):
 
 class IncomeRecordList(LoginRequiredMixin,ListView):
     model = Income_Record
-
     context_object_name = 'object_list'
     context_object_name = 'form'
-
-    
-
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context['object_list'] = context['object_list'].filter(account__user =  self.request.user)
         context['form'] = IncomeRecordFilter(self.request.GET,request=self.request, queryset= context['object_list'].select_related('category').order_by('-date'))
         context['object_list'] = context['form'].qs
         return context
-
-@login_required
-def add_new_income_category(request):
-    form = AddNewIncomeCategory(request.POST or None)
-    if form.is_valid():
-        Income_Category = form.save(commit=False) 
-        Income_Category.user = request.user
-        Income_Category.save() 
-        return redirect('category-list')
-        
-    context = {
-        'form': form
-    }
-    return render(request, "income/add-income-category.html", context)
-
-
-@login_required
-def update_income_category(request,pk):
-    category=Income_Category.objects.get(pk=pk)
-    form = UpdateIncomeCategory(request.POST or None, instance=category)
-    if form.is_valid():
-        form.save() 
-        return redirect('category-list')
-        #form.save()
-        
-    context = {
-        'form': form
-    }
-    return render(request, "income/add-income-category.html", context)
-
-@login_required
-def update_income_record_form(request,pk):
-    record = Income_Record.objects.get(pk=pk)
-    user = request.user
-    form = UpdateIncomeRecord(user, request.POST or None, instance=record )
-    if form.is_valid():
-        form.save()
-        return redirect('income-record-list')
-        
-    context = {
-        'form': form
-    }
-    return render(request, "income/add-income-record.html", context)
-

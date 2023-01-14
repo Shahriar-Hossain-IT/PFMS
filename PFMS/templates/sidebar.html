@@ -5,23 +5,10 @@
     <nav class="navbar-dark">
       <ul class="navbar-nav">
         <li>
-          <div class="text-muted small fw-bold text-uppercase px-3 pt-2">
-            Dashboard
-          </div>
-        </li>
-        <li>
-          <a href="{% url 'dashboard' %}" class="nav-link px-3 active">
+          <a href="" class="nav-link px-3 active">
             <span class="me-2"><i class="bi bi-speedometer2"></i></span>
             <span>Dashboard</span>
           </a>
-        </li>
-        <li class="my-2">
-          <hr class="dropdown-divider bg-light" />
-        </li>
-        <li>
-          <div class="text-muted small fw-bold text-uppercase px-3 mb-1">
-            Accounts
-          </div>
         </li>
         <li>
           <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#Accounts">
@@ -36,7 +23,7 @@
           <div class="collapse" id="Accounts">
             <ul class="navbar-nav ps-3">
               <li>
-                <a href="{% url 'addnewaccount' %}" class="nav-link px-3">
+                <a href="" class="nav-link px-3">
                   <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                   <span>Add New Account</span>
                 </a>
@@ -46,7 +33,7 @@
           <div class="collapse" id="Accounts">
             <ul class="navbar-nav ps-3">
               <li>
-                <a href="{% url 'account-list' %}" class="nav-link px-3">
+                <a href="" class="nav-link px-3">
                   <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                   <span>Accounts List</span>
                 </a>
@@ -55,24 +42,16 @@
           </div>
         </li>
         <li>
-          <a href="{% url 'inter-account-transaction' %}" class="nav-link px-3">
+          <a href="" class="nav-link px-3">
             <span class="me-2"><i class="bi bi-book-fill"></i></span>
             <span>Inter Account Transaction</span>
           </a>
         </li>
         <li>
-          <a href="{% url 'transaction-history' %}" class="nav-link px-3">
+          <a href="" class="nav-link px-3">
             <span class="me-2"><i class="bi bi-book-fill"></i></span>
             <span>Transaction History</span>
           </a>
-        </li>
-        <li class="my-2">
-          <hr class="dropdown-divider bg-light" />
-        </li>
-        <li>
-          <div class="text-muted small fw-bold text-uppercase px-3 mb-1">
-            Income
-          </div>
         </li>
         <li>
           <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#Income" id="Income-Dropdown">
@@ -87,7 +66,7 @@
           <div class="collapse" id="Income">
             <ul class="navbar-nav ps-3">
               <li>
-                <a href="{% url 'add-income-record' %}" class="nav-link px-3" id="Add-Income-Record">
+                <a href="" class="nav-link px-3" id="Add-Income-Record">
                   <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                   <span>Add Income Record</span>
                 </a>
@@ -97,7 +76,7 @@
           <div class="collapse" id="Income">
             <ul class="navbar-nav ps-3">
               <li>
-                <a href="{% url 'category-list' %}" class="nav-link px-3">
+                <a href="" class="nav-link px-3">
                   <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                   <span>Income Category</span>
                 </a>
@@ -106,18 +85,10 @@
           </div>
         </li>
         <li>
-          <a href="{% url 'income-record-list' %}" class="nav-link px-3">
+          <a href="" class="nav-link px-3">
             <span class="me-2"><i class="bi bi-book-fill"></i></span>
             <span>Income History</span>
           </a>
-        </li>
-        <li class="my-2">
-          <hr class="dropdown-divider bg-light" />
-        </li>
-        <li>
-          <div class="text-muted small fw-bold text-uppercase px-3 mb-1">
-            Expense
-          </div>
         </li>
         <li>
           <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#Expanse">
@@ -132,7 +103,7 @@
           <div class="collapse" id="Expanse">
             <ul class="navbar-nav ps-3">
               <li>
-                <a href="{% url 'add-expanse-record' %}" class="nav-link px-3">
+                <a href="" class="nav-link px-3">
                   <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                   <span>Add Expense Record</span>
                 </a>
@@ -142,7 +113,7 @@
           <div class="collapse" id="Expanse">
             <ul class="navbar-nav ps-3">
               <li>
-                <a href="{% url 'expanse-category-list' %}" class="nav-link px-3">
+                <a href="" class="nav-link px-3">
                   <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                   <span>Expense Category</span>
                 </a>
@@ -151,17 +122,41 @@
           </div>
         </li>
         <li>
-          <a href="{% url 'expanse-record-list' %}" class="nav-link px-3">
+          <a href="" class="nav-link px-3">
             <span class="me-2"><i class="bi bi-book-fill"></i></span>
             <span>Expense History</span>
           </a>
         </li>
-        <li>
-          <a href="{% url 'logout' %}" class="nav-link px-3 fixed-bottom ">
-            <span class="me-2 "><i class="btn btn-danger">Logout</i></span>
-          </a>
-        </li>
+        <div class="fixed-bottom ">
+          <li>
+            <a class="nav-link px-3 " data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <span class="me-2 "><i class="btn btn-danger">Logout</i></span>
+            </a>
+          </li>
+        </div>
       </ul>
     </nav>
+    <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Sign Out</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to sign out?</p>
+          </div>
+          <div class="modal-footer">
+            <form method="post" action="{% url 'account_logout' %}">
+              {% csrf_token %}
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+              {% endif %}
+              <button type="submit">Sign Out</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

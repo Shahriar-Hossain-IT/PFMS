@@ -1,6 +1,6 @@
 import django_filters
 from django_filters import filters
-from accounts.models import Accounts
+from BAM.models import Accounts
 from .models import Income_Record, Income_Category
 
 
@@ -18,7 +18,7 @@ class IncomeRecordFilter( django_filters.FilterSet):
         queryset=category)
 
     date = filters.DateRangeFilter()
-    ammount = filters.RangeFilter()
+    amount = filters.RangeFilter()
 
     class Meta:
         model = Income_Record

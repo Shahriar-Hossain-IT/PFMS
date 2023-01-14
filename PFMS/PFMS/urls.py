@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from dashboard.views import dashboard_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', include('userauth.urls')),
-    path('', include('dashboard.urls')),
-    path('accounts/', include('accounts.urls')),
+    path('', include('home.urls')),
+    path('dashboard/', dashboard_view, name='dashboard'),
+    path('authentication/', include('allauth.urls')),
+    path('user/', include('Authentication_and_User_Management.urls')),
+    path('accounts/', include('BAM.urls')),
     path('income/', include('income.urls')),
-    path('expanse/', include('expanse.urls')),
-    path('__debug__/', include('debug_toolbar.urls')),
+    path('expense/', include('expense.urls')),
+
     
 ]

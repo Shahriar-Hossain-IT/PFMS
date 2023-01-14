@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
-from accounts.models import Accounts
+from BAM.models import Accounts
 
 
 
@@ -14,13 +14,14 @@ class Income_Category(models.Model):
 
 
 class Income_Record(models.Model):
-    date = models.DateField(null=False, default= datetime.date.today)
-    time = models.TimeField(auto_now_add=True)
+    account = models.ForeignKey(Accounts, null=False, on_delete=models.CASCADE)
     category = models.ForeignKey(Income_Category, null=True, on_delete=models.SET_NULL)
     details = models.TextField(null=True)
-    ammount = models.FloatField(null=False)
-    account = models.ForeignKey(Accounts, null=False, on_delete=models.CASCADE)
-    # attachement = 
+    amount = models.FloatField(null=False)
+    date = models.DateField(null=False, default= datetime.date.today)
+    time = models.TimeField(auto_now_add=True)
+    
+    # attachment = 
 
     def __str__(self):
-        return f'{self.date}-{self.account.account_name}-{self.category}-{self.ammount}'
+        return f'{self.date}-{self.category}-{self.amount}'

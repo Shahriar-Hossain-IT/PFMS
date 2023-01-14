@@ -1,10 +1,7 @@
 {% extends "main.html" %}
-{{ form.media }}
-
-
-{% block body %}
+{% load static %}
+{% block main %}
 <div class="container">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="row">
         <div class="col-md-4 col-xl-3">
             <div class="card bg-c-blue order-card">
@@ -21,9 +18,9 @@
             <div class="card  bg-c-pink order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Total Expense</h6>
-                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span class="mx-3">{{expanse_data}}</span>
+                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span class="mx-3">{{expense_data}}</span>
                     </h2>
-                    <p class="m-b-0">Last Month Summery<span class="f-right">{{last_month_expanse_data}}</span></p>
+                    <p class="m-b-0">Last Month Summery<span class="f-right">{{last_month_expense_data}}</span></p>
                 </div>
             </div>
         </div>
@@ -61,7 +58,6 @@
    
 
 {% endblock %}
-
 
 
 <script>
@@ -105,4 +101,3 @@
     
     {% endblock %}
 </script>
-
